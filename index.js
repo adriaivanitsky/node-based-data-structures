@@ -3,12 +3,22 @@ class BinaryTreeNode {
     this.value = value;
     this.left = null;
     this.right = null;
+    this.next = null;
   }
 
   add(node) {
-    this.left = node;
-    this.left.add(node);
+    if (!this.next) {
+      this.next = node;
+    } else {
+      this.next.add(node);
+    }
   }
+}
+
+
+getList() {
+    if (!this.next) return this.value;
+    return `${this.value} ${this.next.getList()}`;
 }
 
 const B = new BinaryTreeNode('B');
